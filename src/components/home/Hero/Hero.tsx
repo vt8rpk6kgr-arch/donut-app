@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styles from './Hero.module.css';
 import { Button } from '../../ui/Button/Button';
 import { DonutShowcase } from '../DonutShowcase/DonutShowcase';
@@ -11,8 +11,26 @@ interface HeroProps {
 }
 
 export const Hero = ({ donut, onSelectDonut }: HeroProps) => {
-  // Split title if it contains two words to stack them nicely as in the design
   const titleWords = donut.title.split(' ');
+  const visualRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile(); // Check on initial mount
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleSelectDonut = (selected: Donut) => {
+    onSelectDonut(selected);
+    if (isMobile && visualRef.current) {
+      // Scroll so the big donut sits nicely in the center of the mobile screen
+      setTimeout(() => {
+        visualRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    }
+  };
 
   return (
     <main className={styles.hero}>
@@ -32,10 +50,10 @@ export const Hero = ({ donut, onSelectDonut }: HeroProps) => {
           <Button variant="outline">View Menu</Button>
         </div>
 
-        <DonutSelector selectedDonut={donut} onSelectDonut={onSelectDonut} />
+        <DonutSelector selectedDonut={donut} onSelectDonut={handleSelectDonut} />
       </div>
 
-      <div className={styles.visual}>
+      <div className={styles.visual} ref={visualRef}>
         <DonutShowcase donut={donut} />
       </div>
     </main>

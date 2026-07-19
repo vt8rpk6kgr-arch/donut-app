@@ -3,7 +3,8 @@
   min-height: calc(100vh - 80px); /* Assuming header is ~80px */
   padding: 0 5%;
   position: relative;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .content {
