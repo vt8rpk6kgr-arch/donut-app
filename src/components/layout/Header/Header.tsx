@@ -23,9 +23,9 @@ export const Header = ({ donut }: HeaderProps) => {
 
       <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
         <Link href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Home</Link>
-        <Link href="/menu" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Menu</Link>
-        <Link href="/story" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Our Story</Link>
-        <Link href="/reviews" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Reviews</Link>
+        <Link href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Menu</Link>
+        <Link href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Our Story</Link>
+        <Link href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Reviews</Link>
       </nav>
 
       <div className={styles.actions}>
