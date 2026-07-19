@@ -1,0 +1,50 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px; /* Pill shape */
+  font-weight: 500;
+  padding: 12px 24px;
+  font-size: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, filter 0.3s ease;
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--text-dark);
+  outline-offset: 2px;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.primary {
+  background-color: var(--btn-primary-bg); /* Always #FF5E7E */
+  color: var(--btn-primary-text);
+}
+
+.primary:hover {
+  filter: brightness(0.9);
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--text-dark);
+}
+
+.outline:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.nav {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #fff;
+  background-color: var(--theme-accent);
+}
+
+.nav:hover {
+  filter: brightness(0.9);
+}
