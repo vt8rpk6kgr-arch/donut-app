@@ -17,11 +17,12 @@
   justify-content: center;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  cursor: pointer;
 }
 
 .thumbnailButton:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .thumbnailButton:focus-visible {
@@ -32,14 +33,40 @@
 .active {
   border-color: var(--theme-accent);
   transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .active:hover {
-  transform: scale(1.1) translateY(-2px);
+  transform: scale(1.12);
 }
 
 .thumbnailImage {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: filter 0.3s ease;
+  animation: spinThumbnail 30s linear infinite;
+}
+
+@keyframes spinThumbnail {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.thumbnailButton:hover .thumbnailImage {
+  filter: brightness(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumbnailButton {
+    transition: none !important;
+  }
+  .thumbnailImage {
+    transition: none !important;
+    animation: none !important;
+  }
 }

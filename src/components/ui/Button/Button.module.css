@@ -6,7 +6,8 @@
   font-weight: 500;
   padding: 12px 24px;
   font-size: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, filter 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease, filter 0.4s ease;
+  will-change: transform;
 }
 
 .button:focus-visible {
@@ -15,8 +16,8 @@
 }
 
 .button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .primary {

@@ -35,12 +35,16 @@ export const Hero = ({ donut, onSelectDonut }: HeroProps) => {
   return (
     <main className={styles.hero}>
       <div key={donut.id} className={styles.content}>
-        <h1 className={styles.title}>
+        <h1 className={styles.title} aria-label={donut.title}>
           {titleWords.map((word, index) => (
-            <React.Fragment key={index}>
-              {word}
-              <br />
-            </React.Fragment>
+            <span key={index} className={styles.wordWrapper} aria-hidden="true">
+              <span 
+                className={styles.wordInner} 
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                {word}
+              </span>
+            </span>
           ))}
         </h1>
         <p className={styles.description}>{donut.description}</p>
